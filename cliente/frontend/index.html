@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <meta name="description" content="Painel de faturamento, custos e operações da Elite.">
+  <title>Elite — Painel financeiro</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="profile-button" id="profile-button" type="button" aria-label="Editar perfil do usuário">
+        <span class="profile-avatar" id="profile-avatar" aria-hidden="true">U</span><span class="profile-name" id="profile-name">usuario</span>
+      </button>
+      <a class="brand" href="#inicio" aria-label="Elite, início"><img src="logo.png" alt="Elite Assistente de Finanças"></a>
+      <div class="topbar-actions">
+        <span class="top-label">PAINEL FINANCEIRO <i></i> <span id="connection-label">Conectando...</span></span>
+        <button class="icon-button" id="refresh-button" aria-label="Atualizar dados" title="Atualizar dados">↻</button>
+      </div>
+    </header>
+
+    <main>
+      <nav class="section-nav" aria-label="Navegação das seções">
+        <span class="section-nav-label">SEÇÕES</span>
+        <button class="section-nav-card" data-route="graficos"><span>01 / VISUALIZAR</span><strong>Gráficos</strong><small>Indicadores e participação</small></button>
+        <button class="section-nav-card" data-route="analise"><span>02 / ENTENDER</span><strong>Análise</strong><small>Resumo das operações</small></button>
+        <button class="section-nav-card" data-route="operacoes"><span>03 / FAZER</span><strong>Operações</strong><small>Cadastro e gerenciamento</small></button>
+        <button class="section-nav-card" data-route="credito"><span>04 / CRÉDITO</span><strong>Empréstimos</strong><small>Cadastro e acompanhamento</small></button>
+        <button class="section-nav-card" data-route="pagamentos"><span>05 / CONTROLE</span><strong>Pagamentos</strong><small>Próximos vencimentos</small></button>
+      </nav>
+      <section class="view active" id="view-inicio" aria-labelledby="home-title">
+        <div class="hero">
+          <div class="eyebrow"><span class="eyebrow-line"></span> VISÃO GERAL <span id="today-label"></span></div>
+          <h1 id="home-title">Seu negócio,<br><span>em perspectiva.</span></h1>
+          <p class="hero-copy">Acompanhe os números que movem sua operação.</p>
+        </div>
+        <div class="summary-strip" id="summary-strip"></div>
+        <div class="section-heading"><div><span class="eyebrow">CENTRAL DE CONTROLE</span><h2>Por onde começamos?</h2></div><span class="section-index">01 — 05</span></div>
+        <div class="dashboard-cards">
+          <button class="dashboard-card chart-card" data-route="graficos">
+            <div class="card-meta"><span>01 / VISUALIZAR</span><span class="arrow">↗</span></div>
+            <div class="mini-chart" aria-hidden="true"><span></span><span></span><span></span><span></span><b>+</b></div>
+            <div><h3>Gráfico de<br>faturamento</h3><p>Os números contam histórias.</p></div>
+            <span class="card-foot">EXPLORAR DADOS <span>↗</span></span>
+          </button>
+          <button class="dashboard-card analysis-card" data-route="analise">
+            <div class="card-meta"><span>02 / ENTENDER</span><span class="arrow">↗</span></div>
+            <div class="orbit-art" aria-hidden="true"><span class="orbit o1"></span><span class="orbit o2"></span><span class="orbit o3"></span><span class="orbit-center">%</span></div>
+            <div><h3>Análise de<br>faturamento</h3><p>Cada operação, em detalhe.</p></div>
+            <span class="card-foot">VER ANÁLISE <span>↗</span></span>
+          </button>
+          <button class="dashboard-card operations-card" data-route="operacoes">
+            <div class="card-meta"><span>03 / FAZER</span><span class="arrow">↗</span></div>
+            <div class="stack-art" aria-hidden="true"><span>OPERAÇÃO <b>01</b></span><span>OPERAÇÃO <b>02</b></span><span>OPERAÇÃO <b>03</b></span></div>
+            <div><h3>Operações</h3><p>Cadastre, ajuste e organize.</p></div>
+            <span class="card-foot">GERENCIAR OPERAÇÕES <span>↗</span></span>
+          </button>
+          <button class="dashboard-card credit-card" data-route="credito">
+            <div class="card-meta"><span>04 / CRÉDITO</span><span class="arrow">↗</span></div>
+            <div class="credit-art" aria-hidden="true"><span>R$</span><b>+</b></div>
+            <div><h3>Empréstimos</h3><p>Cadastre clientes e acompanhe contratos.</p></div>
+            <span class="card-foot">GERENCIAR CRÉDITO <span>↗</span></span>
+          </button>
+          <button class="dashboard-card payments-card" data-route="pagamentos">
+            <div class="card-meta"><span>05 / ACOMPANHAR</span><span class="arrow">↗</span></div>
+            <div class="payments-art" aria-hidden="true"><span>VENCIMENTOS</span><b>•••</b><i></i><i></i><i></i></div>
+            <div><h3>Controle de<br>pagamentos</h3><p>Veja os próximos vencimentos.</p></div>
+            <span class="card-foot">ABRIR CONTROLE <span>↗</span></span>
+          </button>
+        </div>
+        <footer class="page-footer"><span>ELITE FATURAMENTO © <span class="year"></span></span><span>FEITO PARA ENXERGAR MAIS LONGE <i></i></span></footer>
+      </section>
+
+      <section class="view" id="view-graficos" aria-labelledby="charts-title">
+        <button class="back-link" data-route="inicio">← <span>VOLTAR AO INÍCIO</span></button>
+        <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> DADOS EM MOVIMENTO</div><h1 id="charts-title">O panorama<br><span>da operação.</span></h1><p>Selecione um indicador e veja como cada operação participa do total.</p></div>
+        <div class="chart-layout">
+          <div class="chart-panel"><div class="panel-top"><span class="eyebrow" id="chart-panel-label">PARTICIPAÇÃO POR OPERAÇÃO</span><span class="live-tag"><i></i> ATUALIZADO AGORA</span></div>
+            <div class="source-switcher" role="group" aria-label="Dados do gráfico"><button class="source-button selected" data-chart-source="operacoes">OPERAÇÕES</button><button class="source-button" data-chart-source="emprestimos">EMPRÉSTIMOS</button></div>
+            <div id="operation-chart-controls">
+            <div class="metric-switcher" role="group" aria-label="Indicador do gráfico">
+              <button class="metric-button selected" data-metric="faturamento" aria-label="Gráfico de faturamento"><i class="metric-dot black"></i><span>FAT</span></button>
+              <button class="metric-button" data-metric="lucro" aria-label="Gráfico de lucro"><i class="metric-dot red"></i><span>LUC</span></button>
+              <button class="metric-button" data-metric="custo" aria-label="Gráfico de custo"><i class="metric-dot orange"></i><span>CUS</span></button>
+              <button class="metric-button" data-metric="funcionarios" aria-label="Gráfico de funcionários"><i class="metric-dot yellow"></i><span>FUN</span></button>
+            </div>
+            </div>
+            <div class="metric-switcher loan-metric-switcher hidden" id="loan-chart-controls" role="group" aria-label="Indicador dos empréstimos">
+              <button class="metric-button selected" data-loan-metric="total_a_receber"><span>A RECEBER</span></button>
+              <button class="metric-button" data-loan-metric="total_emprestado"><span>EMPRESTADO</span></button>
+              <button class="metric-button" data-loan-metric="taxa_media"><span>TAXA</span></button>
+              <button class="metric-button" data-loan-metric="quantidade_clientes"><span>CLIENTES</span></button>
+            </div>
+            <div class="pie-wrap"><div class="pie-chart" id="pie-chart"><div class="pie-hole"><span id="pie-total">R$ 0</span><small id="pie-label">FATURAMENTO TOTAL</small></div></div><div class="empty-chart" id="empty-chart">Adicione operações para visualizar o gráfico.</div></div>
+            <div class="chart-legend" id="chart-legend"></div>
+          </div>
+          <aside class="chart-aside"><div class="aside-number" id="chart-index">01<span>/04</span></div><h2 id="metric-title">Faturamento</h2><p id="metric-description">Veja quanto cada operação representa do faturamento somado.</p><div class="aside-rule"></div><div class="aside-stat"><span id="chart-count-label">OPERAÇÕES NO GRÁFICO</span><strong id="chart-count">0</strong></div><button class="text-action" id="chart-manage-link" data-route="operacoes">GERENCIAR OPERAÇÕES <span>↗</span></button></aside>
+        </div>
+        <footer class="page-footer"><span>ELITE FATURAMENTO © <span class="year"></span></span><span>VISUALIZAÇÃO DE DADOS <i></i></span></footer>
+      </section>
+
+      <section class="view" id="view-analise" aria-labelledby="analysis-title">
+        <button class="back-link" data-route="inicio">← <span>VOLTAR AO INÍCIO</span></button>
+        <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> LEITURA DOS NÚMEROS</div><h1 id="analysis-title">Análise de<br><span>faturamento.</span></h1><p>Uma visão clara de cada parte do negócio.</p></div>
+        <div class="source-switcher analysis-switcher" role="group" aria-label="Dados da análise"><button class="source-button selected" data-analysis-source="operacoes">OPERAÇÕES</button><button class="source-button" data-analysis-source="emprestimos">EMPRÉSTIMOS</button></div>
+        <div id="operations-analysis"><div class="totals-grid" id="analysis-totals"></div><div class="table-heading"><div><span class="eyebrow">DETALHAMENTO</span><h2>Todas as operações</h2></div><button class="pill-action" data-route="operacoes">+ NOVA OPERAÇÃO</button></div><div class="operation-list" id="analysis-list"></div></div>
+        <div class="loan-analysis hidden" id="loan-analysis"><div class="totals-grid" id="loan-analysis-totals"></div><div class="table-heading"><div><span class="eyebrow">VENCIMENTOS</span><h2>Clientes e dias de pagamento</h2></div><button class="pill-action" data-route="credito">+ NOVO EMPRÉSTIMO</button></div><div class="operation-list" id="loan-analysis-list"></div></div>
+        <footer class="page-footer"><span>ELITE FATURAMENTO © <span class="year"></span></span><span>ANÁLISE CONSOLIDADA <i></i></span></footer>
+      </section>
+
+      <section class="view" id="view-credito" aria-labelledby="credit-title">
+        <button class="back-link" data-route="inicio">← <span>VOLTAR AO INÍCIO</span></button>
+        <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> CRÉDITO</div><h1 id="credit-title">Gestão de<br><span>empréstimos.</span></h1><p>Cadastre clientes, condições e vencimentos.</p></div>
+        <div class="management-layout">
+          <form id="loan-form" class="form-panel">
+            <div class="panel-top"><span class="eyebrow" id="loan-form-kicker">NOVO EMPRÉSTIMO</span><span class="form-step">01 — 02</span></div>
+            <h2 id="loan-form-heading">Criar empréstimo</h2><p class="form-hint">Informe os dados e escolha prazo em dias ou quantidade de parcelas.</p>
+            <input type="hidden" id="loan-id">
+            <label class="field full-field">Nome do cliente<input id="loan-client" required maxlength="160" placeholder="Nome completo" autocomplete="name"></label>
+            <label class="field full-field">Dia do empréstimo<input id="loan-date" required type="date"></label>
+            <label class="field full-field">Tipo de prazo<select id="loan-term-type" required><option value="dias">Prazo em dias</option><option value="parcelas">Quantidade de parcelas mensais</option></select></label>
+            <label class="field full-field" id="loan-term-label">Tempo do empréstimo (dias)<input id="loan-term-value" required type="number" min="1" max="600" step="1" value="30"></label>
+            <div class="form-grid"><label class="field">Taxa de juros (%)<input id="loan-rate" required type="number" min="0" max="1000" step="0.01" placeholder="30"></label><label class="field">Valor emprestado<input id="loan-principal" required type="text" inputmode="decimal" placeholder="1.000,00" autocomplete="off"></label><label class="field full-field">Multa diária (R$/dia)<input id="loan-daily-fine" required type="text" inputmode="decimal" value="0,00" placeholder="0,00" autocomplete="off"></label></div>
+            <div class="form-actions"><button type="submit" class="submit-button" id="loan-submit">CRIAR EMPRÉSTIMO <span>↗</span></button><button type="button" class="cancel-button hidden" id="loan-cancel">CANCELAR</button></div><p class="form-message" id="loan-message" role="status"></p>
+          </form>
+          <div class="manage-list-panel"><div class="panel-top"><span class="eyebrow">CONTRATOS</span><span class="count-tag" id="loan-count">0 EMPRÉSTIMOS</span></div><h2>Empréstimos cadastrados</h2><p class="form-hint">Visualize, edite ou exclua cada empréstimo.</p><div class="manage-list" id="loan-list"></div></div>
+        </div>
+        <footer class="page-footer"><span>ELITE CRÉDITO © <span class="year"></span></span><span>GESTÃO DE EMPRÉSTIMOS <i></i></span></footer>
+      </section>
+
+      <section class="view" id="view-pagamentos" aria-labelledby="payments-title">
+        <button class="back-link" data-route="inicio">← <span>VOLTAR AO INÍCIO</span></button>
+        <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> ACOMPANHAMENTO</div><h1 id="payments-title">Controle de<br><span>pagamentos.</span></h1><p>Vencimentos previstos por cliente e parcela.</p></div>
+        <div class="table-heading"><div><span class="eyebrow">AGENDA DE VENCIMENTOS</span><h2>Pagamentos previstos</h2></div><button class="pill-action" data-route="credito">+ NOVO EMPRÉSTIMO</button></div>
+        <div class="payments-list" id="payments-list"></div>
+        <footer class="page-footer"><span>ELITE CRÉDITO © <span class="year"></span></span><span>CONTROLE DE PAGAMENTOS <i></i></span></footer>
+      </section>
+
+      <section class="view" id="view-operacoes" aria-labelledby="operations-title">
+        <button class="back-link" data-route="inicio">← <span>VOLTAR AO INÍCIO</span></button>
+        <div class="page-intro operations-intro"><div class="eyebrow"><span class="eyebrow-line"></span> GESTÃO DO NEGÓCIO</div><h1 id="operations-title">Operações<br><span>em suas mãos.</span></h1><p>Cadastre e mantenha seus dados sempre atualizados.</p></div>
+        <div class="management-layout">
+          <form id="operation-form" class="form-panel">
+            <div class="panel-top"><span class="eyebrow" id="form-kicker">NOVA ENTRADA</span><span class="form-step">01 — 02</span></div>
+            <h2 id="form-heading">Adicionar operação</h2><p class="form-hint">Preencha os dados para registrar uma operação.</p>
+            <input type="hidden" id="operation-id">
+            <label class="field full-field">Nome da operação<input id="name" name="nome" required maxlength="160" placeholder="Ex.: Unidade Centro" autocomplete="organization"></label>
+            <div class="form-grid">
+              <label class="field">Faturamento <span>R$</span><input id="revenue" name="faturamento" required type="text" inputmode="decimal" placeholder="0,00" autocomplete="off"></label>
+              <label class="field">Lucro <span>R$</span><input id="profit" name="valor_lucro" required type="text" inputmode="decimal" placeholder="0,00" autocomplete="off"></label>
+              <label class="field">Custo <span>R$</span><input id="cost" name="valor_custo" required type="text" inputmode="decimal" placeholder="0,00" autocomplete="off"></label>
+              <label class="field">Funcionários<input id="employees" name="quantidade_funcionarios" required type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+            </div>
+            <div class="form-actions"><button type="submit" class="submit-button" id="submit-button">ADICIONAR OPERAÇÃO <span>↗</span></button><button type="button" class="cancel-button hidden" id="cancel-edit">CANCELAR</button></div>
+            <p class="form-message" id="form-message" role="status"></p>
+          </form>
+          <div class="manage-list-panel"><div class="panel-top"><span class="eyebrow">REGISTROS</span><span class="count-tag" id="operation-count">0 OPERAÇÕES</span></div><h2>Suas operações</h2><p class="form-hint">Selecione um registro para editar, consultar ou remover.</p><div class="manage-list" id="manage-list"></div></div>
+        </div>
+        <footer class="page-footer"><span>ELITE FATURAMENTO © <span class="year"></span></span><span>GESTÃO DE OPERAÇÕES <i></i></span></footer>
+      </section>
+    </main>
+    <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="profile-dialog-title">
+      <form id="profile-form">
+        <div class="dialog-top"><span class="eyebrow">PERFIL</span><button class="dialog-close" type="button" data-close-profile aria-label="Fechar perfil">×</button></div>
+        <h2 id="profile-dialog-title">Seu perfil</h2>
+        <label class="field">Nome<input id="profile-name-input" type="text" maxlength="60" required autocomplete="name"></label>
+        <div class="profile-photo-row"><span class="profile-avatar profile-avatar-preview" id="profile-avatar-preview" aria-hidden="true">U</span><div><button class="pill-action" id="choose-profile-photo" type="button">ADICIONAR FOTO</button><input id="profile-photo-input" type="file" accept="image/*" hidden><small>Escolha uma imagem para usar como foto do perfil.</small></div></div>
+        <p class="form-message" id="profile-message" role="status"></p>
+        <div class="form-actions"><button class="submit-button" type="submit">SALVAR PERFIL</button><button class="cancel-button" type="button" data-close-profile>CANCELAR</button></div>
+      </form>
+    </dialog>
+    <dialog class="operation-dialog" id="operation-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-top"><span class="eyebrow">DETALHES DA OPERAÇÃO</span><button class="dialog-close" type="button" data-close-dialog aria-label="Fechar detalhes">×</button></div>
+      <h2 id="dialog-title"></h2><span class="dialog-id" id="dialog-id"></span>
+      <dl class="dialog-stats" id="dialog-stats"></dl>
+    </dialog>
+    <dialog class="operation-dialog" id="loan-dialog" aria-labelledby="loan-dialog-title"><div class="dialog-top"><span class="eyebrow">DETALHES DO EMPRÉSTIMO</span><button class="dialog-close" type="button" data-close-dialog aria-label="Fechar detalhes">×</button></div><h2 id="loan-dialog-title"></h2><span class="dialog-id" id="loan-dialog-id"></span><dl class="dialog-stats" id="loan-dialog-stats"></dl></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
