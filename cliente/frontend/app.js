@@ -1,4 +1,4 @@
-const API_BASE = window.ELITE_API_BASE || 'http://127.0.0.1:8000/api/v1';
+const API_BASE = window.ELITE_API_BASE || 'https://projetoeliteassistentedefinancas-production.up.railway.app/api/v1';
 const API = `${API_BASE}/operacoes`;
 const LOANS_API = `${API_BASE}/emprestimos`;
 const METRICS = {
